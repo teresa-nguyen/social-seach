@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="header">The Reddit Search</h1>
       <form className="form" onSubmit={onSubmit}>
         <Input className="input" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
         <Button type="submit" color="orange" radius="md">
@@ -30,7 +31,6 @@ function App() {
         {result.map((child) => {
           return <Grid.Col span={4}>
             <Card
-              className="card"
               shadow="sm"
               p="xl"
               component="a"
@@ -38,7 +38,7 @@ function App() {
               target="_blank"
               withBorder="true"
             >
-              <Grid>
+              <Grid style={{ height: 275 }}>
                 <Grid.Col span={12}>
                   <Text component="span" weight={500} style={{ marginRight: 8 }}>
                     {child.data.subreddit_name_prefixed}
@@ -51,7 +51,7 @@ function App() {
                   </Text>
                 </Grid.Col>
                 <Grid.Col span={child.data.thumbnail !== 'self' ? 8 : 12}>
-                  <Text weight={500} size="lg" lineClamp={6}>
+                  <Text weight={500} size="lg" lineClamp={6} style={{ minHeight: 183 }}>
                     {child.data.title}
                   </Text>
                 </Grid.Col>
@@ -60,7 +60,7 @@ function App() {
                     <Image src={child.data.thumbnail} height={160} />
                   </Grid.Col>
                 }
-                <Grid.Col span={12}>
+                <Grid.Col span={12} style={{ alignSelf: 'flex-end' }}>
                   <Text component="span" size="sm" style={{ marginRight: 12 }}>
                     {child.data.ups} upvote
                   </Text>
